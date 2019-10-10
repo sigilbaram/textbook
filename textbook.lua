@@ -21,7 +21,7 @@ local window_state = {
     title = 'Textbook',
     style = 'chromeless',
     color = ui.color.rgb(0, 0, 0, 192),
-    width = 140,
+    width = 144,
     x = 5,
     y = 0,
 }
@@ -84,9 +84,15 @@ end
 
 local show_skills = function(skills)
     for _,skill in ipairs(skills) do
-        pos(15,20)
+        pos(15,15)
         ui.text(skill.name)
-        pos(120,0)
+        if skill.level < 10 then
+            pos(132,0)
+        elseif skill.level < 100 then
+            pos(126,0)
+        else
+            pos(120,0)
+        end
         local color = ui.color.white
         if skill.capped then
             color = ui.color.dodgerblue
@@ -108,13 +114,13 @@ ui.display(function()
     
     local height = 10
     if skills.combat_skills[1] then
-        height = height + 20 * (#skills.combat_skills + 1)
+        height = height + 15 * (#skills.combat_skills + 1)
     end
     if skills.combat_skills[1] and skills.magic_skills[1] then
-        height = height + 5
+        height = height + 10
     end
     if skills.magic_skills[1] then
-        height = height + 20 * (#skills.magic_skills + 1)
+        height = height + 15 * (#skills.magic_skills + 1)
     end
     window_state.height = height
     window_state.y = math.floor((windower.settings.ui_size.height - height) / 2)
@@ -129,7 +135,7 @@ ui.display(function()
         end
         
         if skills.combat_skills[1] and skills.magic_skills[1] then
-            pos(5,25)
+            pos(5,20)
         end
         
         if skills.magic_skills[1] then
