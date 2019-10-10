@@ -1,0 +1,9 @@
+<package>
+    <name>textbook</name>
+    <version>1.0.0.0</version>
+    <type>addon</type>
+    <dependencies>
+        <dependency>player</dependency>
+        <dependency>settings</dependency>
+    </dependencies>
+</package>
